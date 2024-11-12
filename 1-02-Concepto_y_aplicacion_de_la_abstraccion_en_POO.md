@@ -155,6 +155,24 @@ classDiagram
     MetodoPago <|-- PayPal
     Transaccion o-- MetodoPago
 ```
+##### Diagrama de secuencia de Sistema de Pagos
+
+```mermaid
+sequenceDiagram
+    participant Transaccion
+    participant MetodoPago
+    participant TarjetaCredito
+    participant PayPal
+
+    Transaccion->>MetodoPago: ejecutar_pago(monto)
+    MetodoPago->>TarjetaCredito: procesar_pago(monto) (si es TarjetaCredito)
+    MetodoPago->>PayPal: procesar_pago(monto) (si es PayPal)
+    TarjetaCredito->>TarjetaCredito: verificar_fondos(monto)
+    PayPal->>PayPal: verificar_fondos(monto)
+    TarjetaCredito-->>MetodoPago: Retorna True (si hay fondos)
+    PayPal-->>MetodoPago: Retorna True (si hay fondos)
+    MetodoPago-->>Transaccion: Retorna True (pago procesado con éxito)
+```
 
 
 ### 2.3 Pruebas Unitarias
