@@ -125,30 +125,30 @@ class Transaccion:
 ```mermaid
 classDiagram
     class MetodoPago {
-        +procesar_pago(monto: float) boolean
-        +verificar_fondos(monto: float) boolean
+        +procesar_pago(monto: float) bool
+        +verificar_fondos(monto: float) bool
     }
 
     class TarjetaCredito {
-        +numero: String
-        +fecha_exp: String
-        +__init__(numero: String, fecha_exp: String)
-        +procesar_pago(monto: float) boolean
-        +verificar_fondos(monto: float) boolean
+        +numero: str
+        +fecha_exp: str
+        +__init__(numero: str, fecha_exp: str)
+        +procesar_pago(monto: float) bool
+        +verificar_fondos(monto: float) bool
     }
 
     class PayPal {
-        +email: String
-        +__init__(email: String)
-        +procesar_pago(monto: float) boolean
-        +verificar_fondos(monto: float) boolean
+        +email: str
+        +__init__(email: str)
+        +procesar_pago(monto: float) bool
+        +verificar_fondos(monto: float) bool
     }
 
     class Transaccion {
         +metodo_pago: MetodoPago
-        +fecha: DateTime
+        +fecha: datetime
         +__init__(metodo_pago: MetodoPago)
-        +ejecutar_pago(monto: float) boolean
+        +ejecutar_pago(monto: float) bool
     }
 
     MetodoPago <|-- TarjetaCredito
